@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import { resolve as urlResolve } from 'url';
 import { RedocStandalone } from '../src';
 import ComboBox from './ComboBox';
+import ColorDrop from './ColorDrop';
+import defaultTheme from '../src/theme';
+import { ThemeInterface } from '../src/theme';
+
 
 const demos = [
   { value: 'https://api.apis.guru/v2/specs/instagram.com/1.0.0/swagger.yaml', label: 'Instagram' },
@@ -20,11 +24,12 @@ const demos = [
 ];
 
 const DEFAULT_SPEC = 'openapi.yaml';
+const DEFAULT_COLOR = '#32329f'
 
 class DemoApp extends React.Component<
   {},
-  { specUrl: string; dropdownOpen: boolean; cors: boolean }
-> {
+  { specUrl: string; dropdownOpen: boolean; cors: boolean, color: string }
+  > {
   constructor(props) {
     super(props);
 
@@ -44,8 +49,18 @@ class DemoApp extends React.Component<
       specUrl: url,
       dropdownOpen: false,
       cors,
+      color: '',
     };
   }
+  toggleDropdown = () => {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+    });
+  };
+
+  handleColor = (colorvalue) => {
+    this.setState({ color: colorvalue });
+  };
 
   handleChange = (url: string) => {
     this.setState({
@@ -73,6 +88,15 @@ class DemoApp extends React.Component<
   render() {
     const { specUrl, cors } = this.state;
     let proxiedUrl = specUrl;
+    const color = this.state.color;
+    const theme: ThemeInterface = defaultTheme;
+    if (theme && theme.colors && theme.colors.primary) {
+      if (color !== DEFAULT_COLOR && color !== '') {
+        theme.colors.primary.main = color
+      }
+    };
+
+
     if (specUrl !== DEFAULT_SPEC) {
       proxiedUrl = cors
         ? '\\\\cors.apis.guru/' + urlResolve(window.location.href, specUrl)
@@ -95,7 +119,16 @@ class DemoApp extends React.Component<
               <input id="cors_checkbox" type="checkbox" onChange={this.toggleCors} checked={cors} />
               <label htmlFor="cors_checkbox">CORS</label>
             </CorsCheckbox>
+
+            <PickerWrap>
+              <ColorPicker src="/setting.png" onClick={this.toggleDropdown} />
+              {this.state.dropdownOpen &&
+                <ColorDrop onSelectColor={this.handleColor} value={color}>
+                </ColorDrop>}
+            </PickerWrap>
+
           </ControlsContainer>
+
           <iframe
             src="https://ghbtns.com/github-btn.html?user=Rebilly&amp;repo=ReDoc&amp;type=star&amp;count=true&amp;size=large"
             frameBorder="0"
@@ -104,7 +137,8 @@ class DemoApp extends React.Component<
             height="30px"
           />
         </Heading>
-        <RedocStandalone specUrl={proxiedUrl} options={{ scrollYOffset: 'nav' }} />
+        <RedocStandalone specUrl={proxiedUrl} options={{ theme: theme }} />
+
       </>
     );
   }
@@ -132,7 +166,17 @@ const CorsCheckbox = styled.div`
     display: none;
   }
 `;
+const PickerWrap = styled.div`
+  display: block;
+  position: relative;
+`;
+const ColorPicker = styled.img`
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin-left: 15px;
 
+`;
 const Heading = styled.nav`
   position: sticky;
   top: 0;
