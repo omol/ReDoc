@@ -59,3 +59,35 @@ export const Logo = styled.img`
     display: none;
   }
 `;
+export const FontsDropWrap = styled.div`
+  padding: 10px;
+`;
+export const ColorDropWrap = styled.div`
+    display: block;
+    position: absolute;
+    width: 150px;
+    top: 30px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border-radius: 0 0 2px 2px;
+`;
+export const DropLabel = styled.div`
+    display: block;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+export const DropForm = styled.form`
+    padding: 10px;
+`;
+export const InputStyle = styled.input`
+    padding: 0;
+    outline: none;
+    width: 50px;
+    height: 25px;
+    margin: 0px 15px 0px 0px;
+`;
+export const InputSubmit = styled.input`
+    outline: none;
+`;
