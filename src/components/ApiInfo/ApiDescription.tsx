@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { MiddlePanel, Row } from '../../common-elements/';
+import { MiddlePanel, Row } from '../../common-elements';
 
 import { Markdown } from '../Markdown/Markdown';
 

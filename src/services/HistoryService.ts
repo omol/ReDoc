@@ -1,6 +1,6 @@
 import { bind, debounce } from 'decko';
 import { EventEmitter } from 'eventemitter3';
-import { IS_BROWSER } from '../utils/';
+import { IS_BROWSER } from '../utils';
 
 const EVENT = 'hashchange';
 

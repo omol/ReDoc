@@ -12,7 +12,7 @@ import {
   PropertyNameCell,
 } from '../../common-elements/fields-layout';
 
-import { ShelfIcon } from '../../common-elements/';
+import { ShelfIcon } from '../../common-elements';
 
 import { FieldModel } from '../../services/models';
 import { Schema, SchemaOptions } from '../Schema/Schema';
@@ -50,12 +50,12 @@ export class Field extends React.Component<FieldProps> {
         {required && <RequiredLabel> required </RequiredLabel>}
       </ClickablePropertyNameCell>
     ) : (
-      <PropertyNameCell className={deprecated ? 'deprecated' : undefined} kind={kind} title={name}>
-        <PropertyBullet />
-        {name}
-        {required && <RequiredLabel> required </RequiredLabel>}
-      </PropertyNameCell>
-    );
+        <PropertyNameCell className={deprecated ? 'deprecated' : undefined} kind={kind} title={name}>
+          <PropertyBullet />
+          {name}
+          {required && <RequiredLabel> required </RequiredLabel>}
+        </PropertyNameCell>
+      );
 
     return (
       <>

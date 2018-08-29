@@ -2,7 +2,7 @@ import { resolve as urlResolve } from 'url';
 
 import { OpenAPIRef, OpenAPISchema, OpenAPISpec, Referenced } from '../types';
 
-import { appendToMdHeading, IS_BROWSER } from '../utils/';
+import { appendToMdHeading, IS_BROWSER } from '../utils';
 import { JsonPointer } from '../utils/JsonPointer';
 import { isNamedDefinition } from '../utils/openapi';
 import { buildComponentComment, COMPONENT_REGEXP, MDX_COMPONENT_REGEXP } from './MarkdownRenderer';

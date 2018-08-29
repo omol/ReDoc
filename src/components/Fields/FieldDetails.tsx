@@ -15,7 +15,7 @@ import { FieldProps } from './Field';
 import { ConstraintsView } from './FieldContstraints';
 import { FieldDetail } from './FieldDetail';
 
-import { Badge } from '../../common-elements/';
+import { Badge } from '../../common-elements';
 
 export class FieldDetails extends React.PureComponent<FieldProps> {
   render() {

@@ -1,4 +1,4 @@
-import { IS_BROWSER } from '../utils/';
+import { IS_BROWSER } from '../utils';
 import { IMenuItem } from './MenuStore';
 import { OperationModel } from './models';
 

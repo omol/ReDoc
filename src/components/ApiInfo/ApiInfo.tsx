@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { AppStore } from '../../services/AppStore';
 
-import { MiddlePanel, Row } from '../../common-elements/';
+import { MiddlePanel, Row } from '../../common-elements';
 
 import { StyledMarkdownBlock } from '../Markdown/styled.elements';
 import {

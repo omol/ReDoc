@@ -1,7 +1,7 @@
 import memoize from 'memoize-one';
 import { Component, createContext } from 'react';
 
-import { AppStore } from '../services/';
+import { AppStore } from '../services';
 import { RedocRawOptions } from '../services/RedocNormalizedOptions';
 import { loadAndBundleSpec } from '../utils';
 

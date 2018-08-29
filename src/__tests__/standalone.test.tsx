@@ -6,7 +6,7 @@ import * as yaml from 'yaml-js';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-import { Loading, RedocStandalone } from '../components/';
+import { Loading, RedocStandalone } from '../components';
 
 describe('Components', () => {
   describe('RedocStandalone', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip } from '../common-elements/Tooltip';
+import { Tooltip } from './Tooltip';
 
 import { ClipboardService } from '../services/ClipboardService';
 
@@ -15,7 +15,7 @@ export interface CopyButtonWrapperProps {
 export class CopyButtonWrapper extends React.PureComponent<
   CopyButtonWrapperProps,
   { tooltipShown: boolean }
-> {
+  > {
   constructor(props) {
     super(props);
     this.state = {

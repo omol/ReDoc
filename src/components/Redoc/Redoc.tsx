@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ThemeProvider } from '../../styled-components';
 
 import { AppStore } from '../../services';
-import { ApiDescription, ApiInfo } from '../ApiInfo/';
+import { ApiDescription, ApiInfo } from '../ApiInfo';
 import { ApiLogo } from '../ApiLogo/ApiLogo';
 import { ContentItems } from '../ContentItems/ContentItems';
 import { OptionsProvider } from '../OptionsProvider';

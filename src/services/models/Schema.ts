@@ -6,7 +6,7 @@ import { OpenAPIParser } from '../OpenAPIParser';
 import { RedocNormalizedOptions } from '../RedocNormalizedOptions';
 import { FieldModel } from './Field';
 
-import { MergedOpenAPISchema } from '../';
+import { MergedOpenAPISchema } from '..';
 import {
   detectType,
   humanizeConstraints,
@@ -14,7 +14,7 @@ import {
   isPrimitiveType,
   JsonPointer,
   sortByRequired,
-} from '../../utils/';
+} from '../../utils';
 
 // TODO: refactor this model, maybe use getters instead of copying all the values
 export class SchemaModel {
