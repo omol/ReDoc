@@ -5,8 +5,8 @@ import { resolve as urlResolve } from 'url';
 import { RedocStandalone } from '../src';
 import ComboBox from './ComboBox';
 import ColorDrop from './ColorDrop';
-import defaultTheme from '../src/theme';
-import { ThemeInterface } from '../src/theme';
+import defaultTheme, { ResolvedThemeInterface } from '../src/theme';
+
 
 
 const demos = [
@@ -24,7 +24,6 @@ const demos = [
 ];
 
 const DEFAULT_SPEC = 'openapi.yaml';
-const DEFAULT_COLOR = '#32329f'
 
 class DemoApp extends React.Component<
   {},
@@ -49,7 +48,7 @@ class DemoApp extends React.Component<
       specUrl: url,
       dropdownOpen: false,
       cors,
-      color: '',
+      color: (defaultTheme as ResolvedThemeInterface).colors.primary.main,
     };
   }
   toggleDropdown = () => {
@@ -89,12 +88,6 @@ class DemoApp extends React.Component<
     const { specUrl, cors } = this.state;
     let proxiedUrl = specUrl;
     const color = this.state.color;
-    const theme: ThemeInterface = defaultTheme;
-    if (theme && theme.colors && theme.colors.primary) {
-      if (color !== DEFAULT_COLOR && color !== '') {
-        theme.colors.primary.main = color
-      }
-    };
 
 
     if (specUrl !== DEFAULT_SPEC) {
@@ -137,8 +130,15 @@ class DemoApp extends React.Component<
             height="30px"
           />
         </Heading>
-        <RedocStandalone specUrl={proxiedUrl} options={{ theme: theme }} />
-
+        <RedocStandalone specUrl={proxiedUrl} options={{
+          theme: {
+            colors: {
+              primary: {
+                main: color
+              }
+            }
+          }
+        }} />
       </>
     );
   }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export interface ColorDropProps {
     onSelectColor?: (color: string) => void;
-    value?: string;
+    value: string;
 }
 export interface ColorDropState {
     color: string;
@@ -11,19 +11,12 @@ export interface ColorDropState {
 export default class ColorDrop extends React.Component<ColorDropProps, ColorDropState> {
 
     state = {
-        color: this.props.value || ''
-    }
-
-    getValue = () => {
-        if (this.state.color == '') {
-            return '#32329f';
-        }
-        return this.state.color;
+        color: this.props.value
     }
 
     handleColorChange = (e) => {
         var color = e.target.value;
-        this.setState({ color: `${color}` });
+        this.setState({ color });
 
     };
     handleColorSubmit = (e) => {
@@ -37,11 +30,11 @@ export default class ColorDrop extends React.Component<ColorDropProps, ColorDrop
         return (
             <ColorDropWrap>
                 <DropLabel>Settings</DropLabel>
-                <form onSubmit={this.handleColorSubmit} style={DropForm}>
+                <DropForm onSubmit={this.handleColorSubmit}>
                     <p>Primary color:</p>
-                    <input style={InputStyle} type="color" onChange={this.handleColorChange} value={this.getValue()} />
-                    <input style={InputSubmit} type="submit" />
-                </form>
+                    <InputStyle type="color" onChange={this.handleColorChange} value={this.state.color} />
+                    <InputSubmit type="submit" />
+                </DropForm>
             </ColorDropWrap>
         );
     }
@@ -63,16 +56,16 @@ const DropLabel = styled.div`
     padding: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
-const DropForm = {
-    padding: '10px'
-}
-const InputStyle = {
-    padding: '0',
-    outline: 'none',
-    width: '50px',
-    height: '25px',
-    margin: '0px 15px 0px 0px'
-}
-const InputSubmit = {
-    outline: 'none',
-}
+const DropForm = styled.form`
+    padding: 10px;
+`;
+const InputStyle = styled.input`
+    padding: 0;
+    outline: none;
+    width: 50px;
+    height: 25px;
+    margin: 0px 15px 0px 0px;
+`;
+const InputSubmit = styled.input`
+    outline: none;
+`;
